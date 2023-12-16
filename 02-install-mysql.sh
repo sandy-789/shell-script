@@ -26,4 +26,6 @@ then
     echo "ERROR:: Installation git is failed"
     exit 1
 else
-    echo "Installation mysql git succed"
+    echo "Installation git git succed"
+
+fi
