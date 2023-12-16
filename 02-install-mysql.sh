@@ -19,7 +19,7 @@ then
 else
     echo "Installation mysql is succed"
 fi
-yum install -y 
+yum install git -y 
 then
     echo "ERROR:: Installation git is failed"
     exit 1
