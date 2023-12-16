@@ -26,6 +26,5 @@ then
     echo "ERROR:: Installation git is failed"
     exit 1
 else
-    echo "Installation git git succed"
-
+    echo "Installation git is succed"
 fi
