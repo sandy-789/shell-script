@@ -2,7 +2,8 @@
 
 ID=$(id -u)
 
-LOGFILE ="tmp/$0"
+LOGFILE="tmp/$0"
+
 VALIDATE() { 
     if [$1 -ne 0]
     then
@@ -24,13 +25,15 @@ fi
 # git mysql
 for packages in $@
 do
-  yum list installed $packages &>> $LOGFILE
+   yum list installed $packages &>> $LOGFILE
 
-  if [$? -ne 0]
-   then
+   if [$? -ne 0]
+    then
        yum install $packages -y $LOGFILE
        VALIDATE $? "installing $package"
     else
-      echo -e "$packages is alredy installed...
+      echo -e "$packages is alredy installed"...
+   fi   
+
 done
 
