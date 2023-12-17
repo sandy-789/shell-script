@@ -8,8 +8,6 @@ VALIDATE(){
          echo -e "2... FAILED"
     else
          echo -e "2...SUCESS"
-
-
 }
 if {$ID -ne 0 } 
 then
