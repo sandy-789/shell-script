@@ -23,10 +23,9 @@ do
     yum list install $package
     if {$? -ne 0} 
     then 
-     yum install  package -y
-     VALIDATE {$1} install package
-
+        yum install  package -y
+        VALIDATE {$1} install package
     else
-    echo -e "$PACKAGE alreay installed.... SKIPPING"
+        echo -e "$PACKAGE alreay installed.... SKIPPING"
     fi
 done
