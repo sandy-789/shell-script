@@ -27,6 +27,7 @@ then
 else
     echo -e "you are root user"
 fi
+
 # git mysql postfix net-tools
 # package=git for first time
 
