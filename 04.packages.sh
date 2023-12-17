@@ -1,44 +1,45 @@
 #!/bin/bash
 
-ID=$(id -u)
+ID=$( id -U)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
-LOGFILE="tmp/$0-$TIMESTAMP.LOG"
+LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
+echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
-
-VALIDATE(){
-    if {$1 -ne 0}
+VALIDATE (){
+    if [$1 ne -0]
     then
-         echo -e "$2 ... $R FAILED $N "
+        echo -e "$2... FAILED"
     else
-         echo -e "$2 ...$G SUCESS $N"
+        echo -e "$2... SUCCESS"
     fi
 }
 
-if [ $ID -ne 0 ]
+if [$ID -ne 0]
 then
-    echo -e " run the script with root user"
-    exit 1
-else
-    echo -e "you are root user"
-fi
+    echo -e "ERROR: : please run the script with root access"
+    exit 1 
+ else 
+     echo "you are root user"
+fi 
 
+#echo "All arguments passed: $@"
 # git mysql postfix net-tools
 # package=git for first time
 
-for package in $0
+for package $0
 do
-    yum list install $package
-    if [ $? -ne 0 ] 
-    then 
-        yum install  $package -y
-        VALIDATE $? "installation of $package"
-    else
-        echo -e "$package alreay installed.... SKIPPING"
-    fi
-done
+  yum list install $package
+  if [$? -ne 0]
+  then
+      yum intsall $package -y
+      VALIDATE $?
+  else
+     echo -E "$package is alredy installed..."
+  fi
+  done
