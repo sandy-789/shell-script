@@ -12,7 +12,7 @@ LOGFILE="/tmp/$0-$TIMESTAMP.log"
 echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
 
 VALIDATE (){
-    if [$1 ne -0]
+    if [ $1 ne -0]
     then
         echo -e "$2... FAILED"
     else
@@ -24,7 +24,7 @@ if [ $ID -ne 0]
 then
     echo -e "ERROR: : please run the script with root access"
     exit 1 
- else 
+else 
      echo "you are root user"
 fi 
 
@@ -32,14 +32,14 @@ fi
 # git mysql postfix net-tools
 # package=git for first time
 
-for package in $0
+for package in $@
 do
-  yum list install $package
-  if [$? -ne 0]
-  then
-      yum intsall $package -y
-      VALIDATE $?
-  else
-     echo -E "$package is alredy installed..."
-  fi
-  done
+    yum list install $package
+    if [ $? -ne 0 ]
+    then
+       yum intsall $package -y
+       VALIDATE $?
+    else
+       echo -E "$package is alredy installed..."
+    fi
+done
