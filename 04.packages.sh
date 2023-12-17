@@ -1,7 +1,6 @@
 #!/bin/bash
 
-ID=($id -u)
-
+ID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -11,6 +10,7 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="tmp/$0-$TIMESTAMP.LOG"
 
 
+
 VALIDATE(){
     if {$1 -ne 0}
     then
@@ -18,9 +18,9 @@ VALIDATE(){
     else
          echo -e "$2...$G SUCESS $N"
     fi
-
 }
-if {$ID -ne 0 } 
+
+if [ $ID -ne 0 ]
 then
     echo -e " run the script with root user"
     exit 1
@@ -34,9 +34,9 @@ fi
 for package in $0
 do
     yum list install $package
-    if {$? -ne 0} 
+    if [ $? -ne 0 ] 
     then 
-        yum install  package -y
+        yum install  $package -y
         VALIDATE $? install package
     else
         echo -e "$PACKAGE alreay installed.... SKIPPING"
