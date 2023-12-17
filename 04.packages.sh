@@ -20,7 +20,7 @@ VALIDATE (){
     fi
 }
 
-if [$ID -ne 0]
+if [ $ID -ne 0]
 then
     echo -e "ERROR: : please run the script with root access"
     exit 1 
@@ -32,7 +32,7 @@ fi
 # git mysql postfix net-tools
 # package=git for first time
 
-for package $0
+for package in $0
 do
   yum list install $package
   if [$? -ne 0]
