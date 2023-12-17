@@ -21,19 +21,18 @@ then
        echo -e "you are root user"
 
 fi
+# git mysql postfix net-tools
+# package=git for first time
 
-# git mysql
 for package in $@
 do
-   yum list installed $package &>> $LOGFILE
-
-   if [$? -ne 0]
-   then
-       yum install $package -y 
-       VALIDATE $? "installing $package"
+    yum list installed $package &>> $LOGFILE #check installed or not
+    if [ $? -ne 0 ] #if not installed
+    then
+        yum install $package -y &>> $LOGFILE # install the package
+        VALIDATE $? "Installation of $package" # validate
     else
-      echo -e "$packages is alredy installed"...
-   fi   
-
+        echo -e "$package is already installed ... $Y SKIPPING $N"
+    fi
 done
 
