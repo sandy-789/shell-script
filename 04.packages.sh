@@ -14,9 +14,9 @@ LOGFILE="tmp/$0-$TIMESTAMP.LOG"
 VALIDATE(){
     if {$1 -ne 0}
     then
-         echo -e "$2... $R FAILED $N "
+         echo -e "$2 ... $R FAILED $N "
     else
-         echo -e "$2...$G SUCESS $N"
+         echo -e "$2 ...$G SUCESS $N"
     fi
 }
 
@@ -37,8 +37,8 @@ do
     if [ $? -ne 0 ] 
     then 
         yum install  $package -y
-        VALIDATE $? install package
+        VALIDATE $? "installation of $package"
     else
-        echo -e "$PACKAGE alreay installed.... SKIPPING"
+        echo -e "$package alreay installed.... SKIPPING"
     fi
 done
