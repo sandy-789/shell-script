@@ -13,8 +13,8 @@ VALIDATE() {
     fi
 }
 
-if [$ID -ne 0 ]
-    then 
+if [ $ID -ne 0 ]
+then 
        echo -e "please run the script with root acess"
        exit 1
     else
