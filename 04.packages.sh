@@ -18,7 +18,7 @@ then
 else
     echo -e " you are root user"
 
-for package $0
+for package in $0
 do
     yum list install $package
     if {$? -ne 0} 
