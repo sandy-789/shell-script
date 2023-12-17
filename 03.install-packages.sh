@@ -23,13 +23,13 @@ then
 fi
 
 # git mysql
-for packages in $@
+for package in $@
 do
-   yum list installed $packages &>> $LOGFILE
+   yum list installed $package &>> $LOGFILE
 
    if [$? -ne 0]
-    then
-       yum install $packages -y $LOGFILE
+   then
+       yum install $packages -y 
        VALIDATE $? "installing $package"
     else
       echo -e "$packages is alredy installed"...
