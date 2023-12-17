@@ -1,13 +1,22 @@
 #!/bin/bash
 
-ID=(id -u)
+ID=($id -u)
+
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+
+TIMESTAMP=$(date +%F-%H-%M-%S)
+LOGFILE="tmp/$0-$TIMESTAMP.LOG"
+
 
 VALIDATE(){
     if {$1 -ne 0}
     then
-         echo -e "$2... FAILED"
+         echo -e "$2... $R FAILED $N "
     else
-         echo -e "$2...SUCESS"
+         echo -e "$2...$G SUCESS $N"
     fi
 
 }
@@ -16,7 +25,10 @@ then
     echo -e " run the script with root user"
     exit 1
 else
-    echo -e " you are root user"
+    echo -e "you are root user"
+fi
+# git mysql postfix net-tools
+# package=git for first time
 
 for package in $0
 do
@@ -24,7 +36,7 @@ do
     if {$? -ne 0} 
     then 
         yum install  package -y
-        VALIDATE {$1} install package
+        VALIDATE $? install package
     else
         echo -e "$PACKAGE alreay installed.... SKIPPING"
     fi
