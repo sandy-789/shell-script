@@ -28,5 +28,5 @@ do
 
     else
     echo -e "$PACKAGE alreay installed.... SKIPPING"
-  
+    fi
 done
