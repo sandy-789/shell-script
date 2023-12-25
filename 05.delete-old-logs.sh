@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOUR_DIRE= /tmp/shell-scripts.log
+SOUR_DIRE= "/tmp/shell-scripts.logs"
 
 R="\e[31m"
 G="\e[32m"
