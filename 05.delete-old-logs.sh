@@ -1,19 +1,18 @@
 #!/bin/bash
 
-SOUR_DIRE= "/tmp/shellscript.logs"
+SOURCE_DIR="/tmp/shellscript-logs"
 
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-if [ ! -d $SOUR_DIRE ]
+if [ ! -d $SOURCE_DIR ] # ! denotes opposite
 then
-    echo -e "$R Source directory: $SOUR_DIRE does not exits. "
+    echo -e "$R Source directory: $SOURCE_DIR does not exists. $N"
+fi
 
-fi 
-
-FILES_TO_DELETE=$(find $SOUR_DIRE -type f -mtime +14 -name "*.log")
+FILES_TO_DELETE=$(find $SOURCE_DIR -type f -mtime +14 -name "*.log")
 
 while IFS= read -r line
 do
